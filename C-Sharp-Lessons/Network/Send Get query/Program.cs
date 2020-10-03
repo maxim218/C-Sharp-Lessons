@@ -12,8 +12,8 @@ namespace MyProject
             {
                 WebRequest request = WebRequest.Create(urlValue);
                 WebResponse response = request.GetResponse();
-                Stream stream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
+                using Stream stream = response.GetResponseStream();
+                using StreamReader reader = new StreamReader(stream);
                 string line = "";
                 string buffer = "";
                 while ((line = reader.ReadLine()) != null) buffer += (line + "\n");
